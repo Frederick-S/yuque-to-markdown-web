@@ -1,1 +1,1 @@
-# yuque-to-markdown-web
+# yuque-to-markdown-web [![Node.js CI](https://github.com/Frederick-S/yuque-to-markdown-web/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Frederick-S/yuque-to-markdown-web/actions/workflows/build.yml)
