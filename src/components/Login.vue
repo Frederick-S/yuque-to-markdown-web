@@ -1,5 +1,17 @@
 <template>
-  <b-button type="is-primary" @click="login">Login</b-button>
+  <div class="columns">
+    <div class="container column is-half">
+      <b-navbar>
+        <template #end>
+          <b-navbar-item tag="div">
+            <div class="buttons">
+              <b-button type="is-primary" @click="login">Login</b-button>
+            </div>
+          </b-navbar-item>
+        </template>
+      </b-navbar>
+    </div>  
+  </div>
 </template>
 
 <script>
@@ -20,11 +32,13 @@ export default {
               'X-tokenId': parameters.tokenId
             }
           })
-          .then(() => {
+          .then((me) => {
             clearInterval(interval)
             popup.close()
 
             localStorage.setItem('yuque-tokenId', parameters.tokenId)
+            localStorage.setItem('yuque-me', JSON.stringify(me))
+
             this.$router.push('/repos')
           })
         }
