@@ -3,7 +3,7 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
-          <h3>使用语雀登陆</h3>
+          <h3>请使用语雀登陆</h3>
           <hr>
           <div class="a">
             <b-button type="is-primary" @click="login">登陆</b-button>
