@@ -5,7 +5,7 @@
         <template #end>
           <b-navbar-dropdown :label="welcome">
             <b-navbar-item href="#" @click="logout">
-              Logout
+              退出
             </b-navbar-item>
           </b-navbar-dropdown>
         </template>
@@ -21,7 +21,7 @@ import toast from '../toast'
 export default {
   computed: {
     welcome() {
-      return `Welcome, ${this.me.name}`
+      return `欢迎, ${this.me.name}`
     }
   },
   data() {

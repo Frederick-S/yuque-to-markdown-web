@@ -1,16 +1,16 @@
 <template>
-  <div class="columns">
-    <div class="container column is-half">
-      <b-navbar>
-        <template #end>
-          <b-navbar-item tag="div">
-            <div class="buttons">
-              <b-button type="is-primary" @click="login">Login</b-button>
-            </div>
-          </b-navbar-item>
-        </template>
-      </b-navbar>
-    </div>  
+  <div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+          <h3>使用语雀登陆</h3>
+          <hr>
+          <div class="a">
+            <b-button type="is-primary" @click="login">登陆</b-button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
