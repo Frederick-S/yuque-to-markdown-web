@@ -14,7 +14,7 @@ export default {
   created() {
     const parameters = queryString.parse(location.search)
 
-    // If there is a token id in parameters, then we assume that the page is opened in a popup window and the user will be authorized
+    // If there is a token id in parameters, then we assume that the page is opened in a popup window and the user will be authorized if the token id is valid
     if (parameters.tokenId) {
       axios.get('/api/me', {
         headers: {
@@ -37,7 +37,7 @@ export default {
 
     const tokenId = localStorage.getItem('yuque-tokenId')
 
-    // If there is a token id, then the user is already authorized
+    // If there is a token id, then the user is already authorized, but we still need to check if the token id is valid
     if (tokenId) {
       axios.get('/api/me', {
         headers: {
