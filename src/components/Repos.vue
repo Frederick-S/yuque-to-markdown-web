@@ -10,6 +10,21 @@
           </b-navbar-dropdown>
         </template>
       </b-navbar>
+      <div class="column is-4 is-offset-4">
+        <section>
+          <b-field label="请选择知识库" grouped>
+            <b-select expanded>
+              <option value="flint">Flint</option>
+            </b-select>
+            <p class="control">
+              <b-button type="is-primary" @click="exportDoc">导出</b-button>
+            </p>
+          </b-field>
+          <!-- <b-field>
+            <b-button type="is-primary" @click="exportDoc">导出</b-button>
+          </b-field> -->
+        </section>
+      </div>
     </div>  
   </div>
 </template>
@@ -51,6 +66,9 @@ export default {
           toast.danger('Internal Server Error')
         }
       })
+    },
+    exportDoc() {
+
     }
   }
 }
