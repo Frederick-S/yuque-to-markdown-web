@@ -13,8 +13,8 @@
       <div class="column is-4 is-offset-4">
         <section>
           <b-field label="请选择知识库" grouped>
-            <b-select expanded>
-              <option v-for="repo in repos" value="repod.id" :key="repo.id">{{ repo.name }}</option>
+            <b-select expanded v-model="selectedRepoId">
+              <option v-for="repo in repos" :value="repo.id" :key="repo.id">{{ repo.name }}</option>
             </b-select>
             <p class="control">
               <b-button type="is-primary" @click="exportDocs">导出</b-button>
@@ -38,8 +38,9 @@ export default {
   },
   data() {
     return {
-      me: JSON.parse(localStorage.getItem('yuque-me')),
-      repos: []
+      repos: [],
+      selectedRepoId: 0,
+      me: JSON.parse(localStorage.getItem('yuque-me'))
     }
   },
   methods: {
@@ -79,6 +80,10 @@ export default {
     })
     .then((repos) => {
       this.repos = repos
+
+      if (repos) {
+        this.selectedRepoId = repos[0].id
+      }
     })
     .catch((error) => {
       if (error.status === 401) {
