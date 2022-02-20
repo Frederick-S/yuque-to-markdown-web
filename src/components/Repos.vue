@@ -17,7 +17,7 @@
               <option v-for="repo in repos" value="repod.id" :key="repo.id">{{ repo.name }}</option>
             </b-select>
             <p class="control">
-              <b-button type="is-primary" @click="exportDoc">导出</b-button>
+              <b-button type="is-primary" @click="exportDocs">导出</b-button>
             </p>
           </b-field>
         </section>
@@ -65,7 +65,7 @@ export default {
         }
       })
     },
-    exportDoc() {
+    exportDocs() {
       
     }
   },
