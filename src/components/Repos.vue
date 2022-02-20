@@ -67,7 +67,23 @@ export default {
       })
     },
     exportDocs() {
-      
+      const tokenId = localStorage.getItem('yuque-tokenId')
+
+      axios.post(`/api/repos/${this.selectedRepoId}/docs/export`, null, {
+        headers: {
+          'X-tokenId': tokenId
+        }
+      })
+      .then(() => {
+
+      })
+      .catch((error) => {
+        if (error.status === 401) {
+          this.$router.push('/login')
+        } else {
+          toast.danger('Internal Server Error')
+        }
+      })
     }
   },
   created() {
