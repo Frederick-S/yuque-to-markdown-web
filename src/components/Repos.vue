@@ -14,15 +14,12 @@
         <section>
           <b-field label="请选择知识库" grouped>
             <b-select expanded>
-              <option value="flint">Flint</option>
+              <option v-for="repo in repos" value="repod.id" :key="repo.id">{{ repo.name }}</option>
             </b-select>
             <p class="control">
               <b-button type="is-primary" @click="exportDoc">导出</b-button>
             </p>
           </b-field>
-          <!-- <b-field>
-            <b-button type="is-primary" @click="exportDoc">导出</b-button>
-          </b-field> -->
         </section>
       </div>
     </div>  
@@ -41,7 +38,8 @@ export default {
   },
   data() {
     return {
-      me: JSON.parse(localStorage.getItem('yuque-me'))
+      me: JSON.parse(localStorage.getItem('yuque-me')),
+      repos: []
     }
   },
   methods: {
@@ -68,8 +66,27 @@ export default {
       })
     },
     exportDoc() {
-
+      
     }
+  },
+  created() {
+    const tokenId = localStorage.getItem('yuque-tokenId')
+      
+    axios.get(`/api/users/${this.me.id}/repos`, {
+      headers: {
+        'X-tokenId': tokenId
+      }
+    })
+    .then((repos) => {
+      this.repos = repos
+    })
+    .catch((error) => {
+      if (error.status === 401) {
+        this.$router.push('/login')
+      } else {
+        toast.danger('Internal Server Error')
+      }
+    })
   }
 }
 </script>
