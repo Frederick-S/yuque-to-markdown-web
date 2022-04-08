@@ -72,10 +72,17 @@ export default {
       axios.post(`/api/repos/${this.selectedRepoId}/docs/export`, null, {
         headers: {
           'X-tokenId': tokenId
-        }
+        },
+        responseType: 'arraybuffer'
       })
-      .then(() => {
-
+      .then((data) => {
+        console.log(data)
+        const url = window.URL.createObjectURL(new Blob([data]))
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', 'export.zip')
+        document.body.appendChild(link)
+        link.click()
       })
       .catch((error) => {
         if (error.status === 401) {
