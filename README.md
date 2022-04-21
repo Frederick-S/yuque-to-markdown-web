@@ -2,5 +2,11 @@
 
 Export yuque repository to markdown files. The server side code is [here](https://github.com/Frederick-S/yuque-to-markdown-api).
 
+## Getting started
+```
+yarn
+yarn serve
+```
+
 ## License
 [MIT](LICENSE)
