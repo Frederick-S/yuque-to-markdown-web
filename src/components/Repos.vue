@@ -68,6 +68,9 @@ export default {
     },
     exportDocs() {
       const tokenId = localStorage.getItem('yuque-tokenId')
+      const loadingComponent = this.$buefy.loading.open({
+        container: null
+      })
 
       axios.post(`/api/repos/${this.selectedRepoId}/docs/export`, null, {
         headers: {
@@ -76,6 +79,8 @@ export default {
         responseType: 'arraybuffer'
       })
       .then((data) => {
+        loadingComponent.close()
+        
         const url = window.URL.createObjectURL(new Blob([data]))
         const link = document.createElement('a')
         link.href = url
@@ -84,6 +89,8 @@ export default {
         link.click()
       })
       .catch((error) => {
+        loadingComponent.close()
+
         if (error.status === 401) {
           this.$router.push('/login')
         } else {
